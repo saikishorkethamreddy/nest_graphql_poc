@@ -1,0 +1,28 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Address {
+  addrNo: Int!
+  addrLine1: String!
+  addrLine2: String!
+  city: String!
+  postcode: String!
+  country: String!
+}
+
+type Query {
+  getAllAddress: [Address!]!
+}
+
+type Mutation {
+  createBlog(addressInput: AddressInput!): Address!
+}
+
+input AddressInput {
+  addrLine1: String!
+  addrLine2: String
+  city: String!
+  postcode: String!
+  country: String!
+}
