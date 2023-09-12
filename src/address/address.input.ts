@@ -1,7 +1,10 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, ID  } from '@nestjs/graphql';
 
 @InputType()
 export class AddressInput {
+  @Field(() => ID, { nullable: true }) // Make addrNo nullable
+  addrNo?: string;
+  
   @Field()
   addrLine1: string;
 

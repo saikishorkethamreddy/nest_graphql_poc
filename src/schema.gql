@@ -2,27 +2,47 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Customer {
+  custID: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  tel: String!
+}
+
 type Address {
-  addrNo: Int!
+  addrNo: ID
   addrLine1: String!
   addrLine2: String!
   city: String!
   postcode: String!
   country: String!
+  customer: Customer!
 }
 
 type Query {
   getAllAddress: [Address!]!
+  getAllCustomers: [Customer!]!
 }
 
 type Mutation {
-  createBlog(addressInput: AddressInput!): Address!
+  createAddress(addressInput: AddressInput!): Address!
+  createCustomer(input: CustomerInput!): Customer!
 }
 
 input AddressInput {
+  addrNo: ID
   addrLine1: String!
   addrLine2: String
   city: String!
   postcode: String!
   country: String!
+}
+
+input CustomerInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  tel: String!
+  address: AddressInput
 }

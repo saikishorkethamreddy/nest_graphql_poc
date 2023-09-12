@@ -13,7 +13,7 @@ export class AddressResolver {
     }
 
     @Mutation((returns) => Address)
-    createBlog(@Args('addressInput') addressInput: AddressInput): Promise<Address> {
+    createAddress(@Args('addressInput') addressInput: AddressInput): Promise<Address> {
         return this.addressService.createAddress(addressInput);
     }
 }

@@ -6,6 +6,7 @@ import { AddressResolver } from './address.resolver';
 
 @Module({
   providers: [AddressService, AddressResolver],
-  imports: [TypeOrmModule.forFeature([Address])]
+  imports: [TypeOrmModule.forFeature([Address])],
+  exports: [TypeOrmModule],
 })
 export class AddressModule {}

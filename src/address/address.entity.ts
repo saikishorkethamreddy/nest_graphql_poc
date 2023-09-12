@@ -1,13 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
+import { Field, Int, ObjectType, ID } from '@nestjs/graphql';
+import { Customer } from 'src/customer/customer.entity';
 
 
 @Entity()
 @ObjectType()
 export class Address {
   @PrimaryGeneratedColumn()
-  @Field((type) => Int)
-  addrNo: number;
+  @Field(() => ID, { nullable: true }) // Make addrNo nullable
+  addrNo?: string;
 
   @Column()
   @Field()
@@ -28,4 +29,8 @@ export class Address {
   @Column()
   @Field()
   country: string;
+
+  @OneToOne(() => Customer, (customer) => customer.address)
+  @Field()
+  customer: Customer;
 }
