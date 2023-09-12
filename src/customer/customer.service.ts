@@ -43,7 +43,6 @@ export class CustomerService {
     }
     
     async findById(custID: number): Promise<Customer | null> {
-      return 
-      // return this.customerRepository.findOne(custID);
+       return this.customerRepository.findOne({where: {custID: custID}});
     }
 }
