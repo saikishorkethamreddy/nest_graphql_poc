@@ -7,7 +7,9 @@ import { AddressModule } from 'src/address/address.module';
 
 @Module({
   providers: [CustomerService, CustomerResolver],
-  imports: [TypeOrmModule.forFeature([Customer]),
-  AddressModule]
+  imports: [
+    TypeOrmModule.forFeature([Customer]),
+    AddressModule
+  ]
 })
 export class CustomerModule {}

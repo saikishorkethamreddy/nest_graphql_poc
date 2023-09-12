@@ -8,7 +8,7 @@ import { Address } from 'src/address/address.entity';
 export class Customer {
   @PrimaryGeneratedColumn()
   @Field()
-  custID: string;
+  custID: number;
 
   @Column()
   @Field()
@@ -29,4 +29,6 @@ export class Customer {
   @OneToOne(() => Address, (address) => address.customer)
   @JoinColumn()
   address: Address;
+
+  
 }

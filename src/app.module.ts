@@ -7,6 +7,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AddressModule } from './address/address.module';
 import { CustomerModule } from './customer/customer.module';
+import { ProductModule } from './product/product.module';
 
 
 @Module({
@@ -22,7 +23,8 @@ import { CustomerModule } from './customer/customer.module';
     entities: ['dist/**/*.entity{.ts,.js}'],
     synchronize: true,
   }),
-  CustomerModule],
+  CustomerModule,
+  ProductModule],
   controllers: [AppController],
   providers: [AppService],
 })

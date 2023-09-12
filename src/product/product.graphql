@@ -1,0 +1,4 @@
+# src/product/product.graphql
+type Query {
+  getProductById(pId: Int!): Product
+}

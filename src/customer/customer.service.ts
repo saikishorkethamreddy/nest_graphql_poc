@@ -42,4 +42,8 @@ export class CustomerService {
       return this.customerRepository.save(customer);
     }
     
+    async findById(custID: number): Promise<Customer | null> {
+      return 
+      // return this.customerRepository.findOne(custID);
+    }
 }

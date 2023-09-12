@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Customer {
-  custID: String!
+  custID: Float!
   firstName: String!
   lastName: String!
   email: String!
@@ -20,14 +20,24 @@ type Address {
   customer: Customer!
 }
 
+type Product {
+  pId: Float!
+  description: String!
+  unitPrice: Float!
+  availableQty: Float!
+}
+
 type Query {
   getAllAddress: [Address!]!
   getAllCustomers: [Customer!]!
+  getCustomerById(custID: Int!): Customer
+  getProductById(pId: Float!): Product
 }
 
 type Mutation {
   createAddress(addressInput: AddressInput!): Address!
   createCustomer(input: CustomerInput!): Customer!
+  createProduct(input: ProductInput!): Product!
 }
 
 input AddressInput {
@@ -45,4 +55,10 @@ input CustomerInput {
   email: String!
   tel: String!
   address: AddressInput
+}
+
+input ProductInput {
+  description: String!
+  unitPrice: Float!
+  availableQty: Float!
 }
