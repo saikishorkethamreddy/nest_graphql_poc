@@ -9,7 +9,7 @@ import { ProductInput } from './product.input';
 export class ProductService {
   constructor(
     @InjectRepository(Product)
-    private readonly productRepository: Repository<Product>,
+    private productRepository: Repository<Product>,
   ) {}
 
   async create(input: ProductInput): Promise<Product> {
@@ -24,4 +24,6 @@ export class ProductService {
   async findById(pId: number): Promise<Product | null> {
     return this.productRepository.findOne({where: {pId: pId}})
   }
+  
+
 }

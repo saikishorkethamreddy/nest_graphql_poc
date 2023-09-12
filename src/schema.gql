@@ -13,6 +13,7 @@ type Order {
   ordID: Float!
   dateOrdered: String!
   orderedQty: Float!
+  product: Product!
 }
 
 type Customer {
@@ -39,6 +40,7 @@ type Query {
   getCustomerById(custID: Int!): Customer
   getProductById(pId: Float!): Product
   getOrderById(ordID: Int!): Order!
+  findOrdersByProductId(prodId: Int!): [Order!]!
 }
 
 type Mutation {

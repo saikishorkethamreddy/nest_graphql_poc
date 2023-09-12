@@ -1,7 +1,8 @@
-import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
+import { Resolver, Mutation, Args, Query, Int } from '@nestjs/graphql';
 import { ProductService } from './product.service';
 import { ProductInput } from './product.input';
 import { Product } from './product.entity';
+import { Order } from 'src/order/order.entity';
 
 @Resolver('Product')
 export class ProductResolver {
@@ -16,4 +17,5 @@ export class ProductResolver {
   async getProductById(@Args('pId') pId: number): Promise<Product | null> {
     return this.productService.findById(pId);
   }
+
 }

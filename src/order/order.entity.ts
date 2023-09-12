@@ -1,5 +1,5 @@
 // src/order/order.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, ManyToMany } from 'typeorm';
 import { Customer } from '../customer/customer.entity';
 import { Product } from '../product/product.entity';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
@@ -23,7 +23,9 @@ export class Order {
   @JoinColumn({ name: 'customerId' }) 
   customer: Customer;
 
-  @ManyToOne(() => Product, (product) => product.orders)
+  @ManyToMany(() => Product, (product) => product.orders)
+  @Field(() => Product)
   @JoinColumn({ name: 'productId' })
   product: Product;
+
 }
