@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Address } from 'src/address/address.entity';
+import { Order } from 'src/order/order.entity';
 
 
 @Entity()
@@ -30,5 +31,7 @@ export class Customer {
   @JoinColumn()
   address: Address;
 
-  
+  @OneToMany(() => Order, (order) => order.customer)
+  @JoinColumn()
+  orders: Order[];
 }

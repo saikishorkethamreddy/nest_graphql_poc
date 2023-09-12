@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Order } from 'src/order/order.entity';
 
 
 @Entity()
@@ -20,4 +21,7 @@ export class Product {
   @Column()
   @Field()
   availableQty: number;
+
+  @OneToMany(() => Order, (order) => order.product)
+  orders: Order[];
 }

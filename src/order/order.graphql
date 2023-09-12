@@ -1,0 +1,19 @@
+type Order {
+  ordID: Int!
+  dateOrdered: String!
+  orderedQty: Int!
+  customer: Customer!
+  product: Product!
+}
+
+type Mutation {
+  createOrder(input: OrderInput!): Order!
+}
+
+type Customer {
+  custID: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  tel: String!
+}

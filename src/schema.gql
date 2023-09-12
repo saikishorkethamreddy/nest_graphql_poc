@@ -2,6 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Product {
+  pId: Float!
+  description: String!
+  unitPrice: Float!
+  availableQty: Float!
+}
+
+type Order {
+  ordID: Float!
+  dateOrdered: String!
+  orderedQty: Float!
+}
+
 type Customer {
   custID: Float!
   firstName: String!
@@ -20,24 +33,19 @@ type Address {
   customer: Customer!
 }
 
-type Product {
-  pId: Float!
-  description: String!
-  unitPrice: Float!
-  availableQty: Float!
-}
-
 type Query {
   getAllAddress: [Address!]!
   getAllCustomers: [Customer!]!
   getCustomerById(custID: Int!): Customer
   getProductById(pId: Float!): Product
+  getOrderById(ordID: Int!): Order!
 }
 
 type Mutation {
   createAddress(addressInput: AddressInput!): Address!
   createCustomer(input: CustomerInput!): Customer!
   createProduct(input: ProductInput!): Product!
+  createOrder(input: OrderInput!): Order!
 }
 
 input AddressInput {
@@ -62,3 +70,15 @@ input ProductInput {
   unitPrice: Float!
   availableQty: Float!
 }
+
+input OrderInput {
+  dateOrdered: DateTime!
+  orderedQty: Float!
+  customerId: Float!
+  productId: Float!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
